@@ -1,0 +1,604 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+$primary-color: #0e7490;
+$second-color:#cffafe;
+$navfot-color:#164e63;
+$text-color:#ffffff;
+$shadow:#10b981;
+$font:'Poppins', sans-serif;
+*{
+  margin:0;
+  padding:0;
+}
+//css like button
+.like {
+  width: 65px;
+  height: 65px;
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  border-radius: 50%;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $navfot-color;
+  font-size: 20px;
+  color: #F1FC3F;
+  cursor: pointer;
+}
+
+//css body
+body {
+  overflow-x: hidden;
+  background-color: $primary-color;
+  width: 100%;
+  color: $text-color;
+  font-family: $font;
+}
+header{
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $navfot-color;
+  // humburger toggle hp
+  button{
+    background-color: transparent;
+    border: 0;
+  }
+  a{
+    text-decoration: none;
+    padding: 0.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  // skip to content
+  .skip-to-content {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .skip-to-content:focus {
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background-color: $primary-color; 
+    color: $text-color;
+    z-index: 1;
+  }
+  .burger{
+    width: 50px;
+    height: 50px;
+    display: block;
+    cursor: pointer;
+  }
+  .garis{
+    display: block;
+    margin: 5px auto;
+    width: 30px;
+    height: 4px;  
+    border-radius: 2rem;
+    background-color: $text-color;
+    transition:all 0.3s ease-in-out;
+  }
+  .switchopen .garis:nth-child(2){ 
+    opacity: 0;
+  }
+
+  .switchopen .garis:nth-child(1){ 
+      transform: translateY(9px) rotate(45deg);
+  }
+  .switchopen .garis:nth-child(3){ 
+      transform: translateY(-9px) rotate(-45deg);
+  }
+
+  .open{
+    display: block;
+  }
+  nav{
+    display: none;
+    width: 100%;
+    border: 7px solid $second-color;
+    border-radius: 10px;
+    margin-top: 1rem;
+    // navbar
+    ul{ 
+      display: flex;
+      position: relative;
+      justify-content: space-around;
+      background-color: $navfot-color;
+      padding: 1rem;
+      li{
+        list-style-type: none;
+        a{
+          font-size: 1.2rem;
+          text-decoration: none;
+          color: $text-color;
+        }
+        a:hover{
+          opacity: 0.7;
+        }
+        a:is(:focus){
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+aside{  
+  img{
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+  }
+}
+
+// main-content
+main{
+  background-color: $primary-color;
+  width: 100%;
+  padding-bottom: 2rem;
+  .content{
+    text-align: center;
+    h1{
+      font-size: 1.5rem;
+      margin:1.5rem 0;
+    }
+    // Detail Restaurant
+    #Detailrestaurant{
+      text-align: center;
+      color:$text-color;
+      margin: 0 1rem;
+      img{
+        margin-top: 1rem;
+        width: 100%;
+        height: 40%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      h3{
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        font-weight: 800;
+      }
+      h6{
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: left;
+        padding-left: 1rem;
+      }
+      p{
+        padding: 1rem;
+        font-size: 0.6rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+      .makanan,
+      .minuman{
+        h4{
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin-bottom: 2rem;
+        }
+        ul{
+          margin-bottom: 2rem;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+          li{
+            font-size: 0.5;
+            font-weight: 400;
+            background-color: $navfot-color;
+            list-style-type: none;
+            padding: 0.5rem;
+            border-radius: 10px;
+            box-shadow: 0.2rem 0.3rem 0.7rem $shadow;
+          }
+        }
+      }
+      .ulasan{
+        justify-content: center;
+        
+        h4{
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin: 1rem 0;
+        }
+        .review-layout{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+          .review-customer{
+            background-color: $navfot-color;
+            border-radius: 20px;
+            text-align: center;
+            h3{
+              font-size: 1rem;
+              font-weight: 800;
+            }
+            h5{
+              font-size: 0.8rem;
+              font-weight: 400;
+            }
+            p{
+              font-size: 0.6rem;
+              font-weight: 400;
+              text-align: justify;
+            }
+          }
+        }
+        
+      }
+    }
+
+    // Daftar restaurant
+    #list-restaurant{
+      text-align: left;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      a{
+        box-shadow: 0.2rem 0.2rem 1rem $second-color;
+        text-decoration: none;
+        color:$text-color;
+        border-radius: 10px;
+        background-color: $navfot-color;
+        article{
+          padding: 0.5rem;
+          h3 {
+            font-size: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+          }
+          h5 {
+              font-size: 0.4rem;
+              font-weight: 600;
+          }
+          h6{
+              font-size:0.5rem;
+              font-weight:600;
+          }
+          p {
+              font-size: 0.2rem;
+              text-align: justify;
+          }
+          img{
+              border-radius: 5px;
+              width: 100%;
+              height: 80px;
+              object-fit: cover;
+              margin-bottom: 0.3rem;
+          }
+        }
+      }
+      a:is(:focus, :hover){
+        scale: 1.08;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0.4rem 0.5rem 1rem $shadow;
+      }
+      
+    }
+  }
+}
+
+
+
+// footer css
+footer{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  background-color: $navfot-color;
+  padding: 1rem 1.5rem;
+  ul{
+    display: flex;
+    justify-content: space-around;
+    li{
+      list-style-type: none;
+      a{
+        display: block;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        color: $text-color;
+        text-decoration: none;
+        text-align: center; 
+      }
+      svg:hover{
+        opacity: 0.7;
+      }
+      svg{
+        padding-top: 0.8rem;
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width:760px) {
+  aside{
+    img{
+      height: 15rem;
+    }
+  }
+  header{
+    .burger{
+      display: none;
+    }
+    nav{
+      margin-top: 0;
+      width: 40%;
+      display: block;
+      border: none;
+      border-radius: 0;
+      ul{
+        background-color: transparent;
+        padding: 0;
+      }
+    }
+  }
+  main{
+    padding-bottom: 5rem;
+    .content{
+      h1{
+        font-size: 2rem;
+      }
+      // Detail Restaurant
+    #Detailrestaurant{
+      margin: 0 2.4rem;
+      img{
+        border-radius: 20px;
+      }
+      h3{
+        font-size: 2rem;
+      }
+      .ulasan{
+        .review-layout{
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+      }
+    }
+
+
+      #list-restaurant{
+        padding: 0 2rem;
+        gap: 2rem;
+        a{
+          box-shadow: 0.4rem 0.4rem 1.3rem $second-color;
+          article{
+            padding: 1rem;
+            h3{
+              font-size: 1rem;
+            }
+            h5{
+              font-size: 0.7rem;
+            }
+            h6{
+              font-size: 0.8rem;
+            }
+            p{
+              font-size: 0.5rem;
+            }
+            img{
+              height: 120px;
+            }
+          }
+        }
+        a:is(:focus,:hover){
+          scale: 1.1;
+          box-shadow: 0.4rem 0.4rem 1.3rem $shadow;
+        }
+      }
+
+    }
+  }
+
+  footer{
+    padding: 2rem;
+    h6{
+      font-size:1.5rem;
+    }
+    ul{
+      gap: 1rem;
+      li{
+        svg{
+          padding-top: 0.3rem;
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width:1000px) {
+  header{
+    nav{
+      width: 30%;
+    }
+  }
+  aside{
+    img{
+      height: 25rem;
+    }
+  }
+  main{
+    .content{
+      h1{
+        font-size: 2.5rem;
+      }
+      #Detailrestaurant{
+        p{
+          font-size: 1.7rem;
+        }
+        .ulasan{
+          .review-layout{
+            .review-customer{
+              h3{
+                font-size: 1.5rem;
+              }
+              h5{
+                font-size: 1.1rem;
+              }
+              p{
+                font-size: 0.9rem;
+              }
+            }
+          }
+        }
+      }
+      #list-restaurant{
+        padding: 0 3rem;
+        gap: 3rem;
+        a{
+          box-shadow: 0.6rem 0.6rem 1.6rem $second-color;
+          article{
+            padding: 1.3rem;
+            h3{
+              font-size: 1.4rem;
+            }
+            h5{
+              font-size: 1.1rem;
+            }
+            h6{
+              font-size: 1.2rem;
+            }
+            p{
+              font-size: 0.9rem;
+            }
+            img{
+              height: 180px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer{
+    padding:2rem 3rem;
+    ul{
+      gap: 1.5rem;
+      li{
+        svg{
+          padding-top: 0.2rem;
+        }
+      }
+    }
+  }
+}
+
+
+// loading Screen Css   
+@keyframes ldio-mx6z9mnxrar {
+  0% { transform: rotate(0) }
+  100% { transform: rotate(360deg) }
+}
+.ldio-mx6z9mnxrar div { box-sizing: border-box!important }
+.ldio-mx6z9mnxrar > div {
+  position: absolute;
+  width: 144px;
+  height: 144px;
+  top: 28px;
+  left: 28px;
+  border-radius: 50%;
+  border: 16px solid #000;
+  border-color: $text-color transparent $text-color transparent;
+  animation: ldio-mx6z9mnxrar 1s linear infinite;
+}
+
+.ldio-mx6z9mnxrar > div:nth-child(2), .ldio-mx6z9mnxrar > div:nth-child(4) {
+  width: 108px;
+  height: 108px;
+  top: 46px;
+  left: 46px;
+  animation: ldio-mx6z9mnxrar 1s linear infinite reverse;
+}
+.ldio-mx6z9mnxrar > div:nth-child(2) {
+  border-color: transparent $navfot-color transparent $navfot-color
+}
+.ldio-mx6z9mnxrar > div:nth-child(3) { border-color: transparent }
+.ldio-mx6z9mnxrar > div:nth-child(3) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldio-mx6z9mnxrar > div:nth-child(3) div:before, .ldio-mx6z9mnxrar > div:nth-child(3) div:after { 
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: -16px;
+  left: 48px;
+  background: $text-color;
+  border-radius: 50%;
+  box-shadow: 0 128px 0 0 $text-color;
+}
+.ldio-mx6z9mnxrar > div:nth-child(3) div:after {
+  left: -16px;
+  top: 48px;
+  box-shadow: 128px 0 0 0 $text-color;
+}
+
+.ldio-mx6z9mnxrar > div:nth-child(4) { border-color: transparent; }
+.ldio-mx6z9mnxrar > div:nth-child(4) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+}
+.ldio-mx6z9mnxrar > div:nth-child(4) div:before, .ldio-mx6z9mnxrar > div:nth-child(4) div:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: -16px;
+  left: 30px;
+  background: $navfot-color;
+  border-radius: 50%;
+  box-shadow: 0 92px 0 0 $navfot-color;
+}
+.ldio-mx6z9mnxrar > div:nth-child(4) div:after {
+  left: -16px;
+  top: 30px;
+  box-shadow: 92px 0 0 0 $navfot-color;
+}
+.loadingio-spinner-double-ring-ttgxaxfkp4 {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: transparent;
+}
+.ldio-mx6z9mnxrar {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-mx6z9mnxrar div { box-sizing: content-box; }
+#location-loading{
+  position: relative;
+  top: 30%;
+  left: 40%;
+  z-index: 999;
+  font-size: 16px;
+  color: #333; 
+  margin-top: 10px; 
+  text-align: center; 
+}
