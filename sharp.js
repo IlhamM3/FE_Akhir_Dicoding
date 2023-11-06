@@ -2,39 +2,31 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const sourceDirectories = [
-  path.resolve(__dirname, 'src/public/images'),
-  path.resolve(__dirname, 'src/public/icons'),
-];
-const destinationDirectories = [
-  path.resolve(__dirname, 'dist/public/images'),
-  path.resolve(__dirname, 'dist/public/icons'),
-];
+const target = path.resolve(__dirname, 'src/public/images');
+const destination = path.resolve(__dirname, 'public/images');
 
-sourceDirectories.forEach((sourceDirectory, index) => {
-  const destinationDirectory = destinationDirectories[index];
+if (!fs.existsSync(destination)) {
+  fs.mkdirSync(destination, { recursive: true });
+}
 
-  if (!fs.existsSync(destinationDirectory)) {
-    fs.mkdirSync(destinationDirectory, { recursive: true }); // Gunakan { recursive: true } untuk membuat direktori secara rekursif jika diperlukan
-  }
-
-  fs.readdirSync(sourceDirectory).forEach((image) => {
-    const sizes = [400, 150];
-
-    sizes.forEach((size) => {
-      sharp(`${sourceDirectory}/${image}`)
-        .resize(size)
-        .toFile(
-          path.resolve(
-            destinationDirectory,
-            `${image.split('.').slice(0, -1).join('.')}-${size}.jpg`,
-          ),
-          (err) => {
-            if (err) {
-              console.error(`Error resizing image: ${err}`);
-            }
-          },
-        );
+const resizeAndSave = (image, width, suffix) => new Promise((resolve, reject) => {
+  sharp(`${target}/${image}`)
+    .resize({ width })
+    .toFile(path.resolve(destination, `${image.split('.').slice(0, -1).join('.')}-${suffix}.jpg`), (err, info) => {
+      if (err) {
+        reject(err);
+      } else {
+        console.log(`Gambar ${image} dengan lebar ${width}px berhasil diproses.`);
+        resolve();
+      }
     });
-  });
+});
+
+fs.readdirSync(target).forEach(async (image) => {
+  try {
+    await resizeAndSave(image, 800, 'large');
+    await resizeAndSave(image, 480, 'small');
+  } catch (error) {
+    console.error(`Gagal memproses gambar ${image}:`, error);
+  }
 });

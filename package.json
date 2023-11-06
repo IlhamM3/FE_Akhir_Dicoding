@@ -6,11 +6,11 @@
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "build-image":"node sharp.js",
     "lint": "eslint ./src",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "e2e": "codeceptjs run --steps",
-    "build-image": "node sharp.js"
+    "e2e": "codeceptjs run --steps"
   },
   "keywords": [],
   "author": "your_name <your.email@domain.com>",

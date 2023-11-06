@@ -4,7 +4,7 @@ const createDaftarRestaurant = (restaurants) => `
     <a href="/#/detail/${restaurants.id}">
         <article>
             <h6>Kota: ${restaurants.city}</h6>
-            <img class="lazyload" crossorigin="anonymous" src="${config.BASE_IMAGE_URL}/${restaurants.pictureId}" alt="${restaurants.name}" />
+            <img class="lazyload" crossorigin="anonymous" data-src="${config.BASE_IMAGE_URL}/${restaurants.pictureId}" alt="${restaurants.name}" />
             <h5>⭐️ ${restaurants.rating}</h5>
             <h3 class="restaurant_name">${restaurants.name}</h3>
             <p>${restaurants.description}</p>
@@ -48,7 +48,7 @@ const createDetailRestaurant = (restaurants) => {
 
   return `
         <h3 tabindex="0">${restaurants.name}</h3>
-        <img class="lazyload" crossorigin="anonymous" src="${config.BASE_IMAGE_URL}/${restaurants.pictureId}" alt="${restaurants.name}" />
+        <img class="lazyload" crossorigin="anonymous" data-src="${config.BASE_IMAGE_URL}/${restaurants.pictureId}" alt="${restaurants.name}" />
         <h6 tabindex="0">Kota: ${restaurants.city}</h6>
         <h6 tabindex="0">Alamat: ${restaurants.address}</h6>
         <h6 tabindex="0">⭐️ ${restaurants.rating}</h6>

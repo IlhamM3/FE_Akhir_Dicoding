@@ -5,6 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: {
@@ -62,8 +63,12 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'src/public/'),
+          from: path.resolve(__dirname, 'src/public'),
           to: path.resolve(__dirname, 'public'),
+          globOptions: {
+            // CopyWebpackPlugin mengabaikan berkas yang berada di dalam folder images
+            ignore: ['**/images/**'],
+          },
         },
       ],
     }),
@@ -75,6 +80,7 @@ module.exports = {
         }),
       ],
     }),
+    new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
   ],
 };
