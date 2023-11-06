@@ -1,0 +1,29 @@
+{
+  "start_url": "./index.html",
+  "name": "Restaurant House",
+  "short_name": "RF",
+  "description": "Daftar Restaurant",
+  "display": "standalone",
+  "background_color": "#cffafe",
+  "theme_color": "#0e7490",
+  "icons": [
+    {
+      "src": "./icons/icon16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon196.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
