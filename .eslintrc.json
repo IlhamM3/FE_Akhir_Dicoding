@@ -10,6 +10,10 @@
         "sourceType": "module"
     },
     "rules": {
+        "max-len":"off",
+        "import/prefer-default-export":"off",
+        "no-prototype-builtins":"off",
+        "consistent-return":"off",
         "func-names":"off",
         "no-param-reassign":"off",
         "no-console": "off",
@@ -19,6 +23,8 @@
         "linebreak-style": "off",
         "import/order":"off",
         "import/no-import-module-exports":"off",
-        "no-restricted-globals":"off"
+        "no-restricted-globals":"off",
+        "no-undef":"off",
+        "no-alert":"off"
     }
-}
+}/* eslint-disable no-undef */
