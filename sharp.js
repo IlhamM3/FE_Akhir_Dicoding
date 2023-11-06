@@ -7,8 +7,8 @@ const sourceDirectories = [
   path.resolve(__dirname, 'src/public/icons'),
 ];
 const destinationDirectories = [
-  path.resolve(__dirname, 'dist/images'),
-  path.resolve(__dirname, 'dist/icons'),
+  path.resolve(__dirname, 'dist/public/images'),
+  path.resolve(__dirname, 'dist/public/icons'),
 ];
 
 sourceDirectories.forEach((sourceDirectory, index) => {
