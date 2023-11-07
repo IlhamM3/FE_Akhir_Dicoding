@@ -5,8 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { GenerateSW } = require('workbox-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -81,10 +80,24 @@ module.exports = {
     }),
     // new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
-    new GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true,
-      swDest: 'sw.bundle.js', // Ganti nama berkas service worker
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: './sw.bundle.js',
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurant-api',
+          },
+        },
+        {
+          urlPattern: ({ url }) => url.href.startsWith('https://restaurant-api.dicoding.dev/images/small/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurant-image-api',
+          },
+        },
+      ],
     }),
   ],
 };
