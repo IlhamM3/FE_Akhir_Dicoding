@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js && node sharp.js",
+    "build": "webpack --config webpack.prod.js",
+    "build-image": "node sharp.js",
     "lint": "eslint ./src",
     "test": "jest",
     "test:watch": "jest --watchAll",
@@ -57,7 +58,7 @@
     "webpack-dev-server": "^4.9.2",
     "webpack-merge": "^5.8.0",
     "whatwg-fetch": "^3.6.2",
-    "workbox-webpack-plugin": "^6.5.3"
+    "workbox-webpack-plugin": "^6.6.0"
   },
   "dependencies": {
     "idb": "^7.1.1",

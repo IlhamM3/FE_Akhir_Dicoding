@@ -9,6 +9,8 @@ const assetcache = [
   './icon.png',
   './images/Logo.png',
   './images/hero-image_2.jpg',
+  './images/hero-image_2-150.jpg',
+  './images/hero-image_2-400.jpg',
   './index.html',
   './app.bundle.js',
   './app.webmanifest',

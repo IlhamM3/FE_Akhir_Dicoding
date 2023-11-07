@@ -5,12 +5,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
-    sw: path.resolve(__dirname, 'src/scripts/sw.js'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -66,7 +66,6 @@ module.exports = {
           from: path.resolve(__dirname, 'src/public'),
           to: path.resolve(__dirname, 'public'),
           globOptions: {
-            // CopyWebpackPlugin mengabaikan berkas yang berada di dalam folder images
             ignore: ['**/images/**'],
           },
         },
@@ -80,7 +79,12 @@ module.exports = {
         }),
       ],
     }),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
+    new GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      swDest: 'sw.bundle.js', // Ganti nama berkas service worker
+    }),
   ],
 };
